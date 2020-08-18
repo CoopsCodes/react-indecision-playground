@@ -23,12 +23,12 @@
 //* ------------------------
 
 //* Rendering via an Object
-var user = {
+const user = {
 	name: "Cooper Viktor",
 	age: 36,
 	location: "Melbourne Victoria",
 };
-var myTemplate = (
+const myTemplate = (
 	<div>
 		//! Ternary Operator example
 		<h1>Welcome {user.name ? user.name : "New User"}</h1>
@@ -52,14 +52,16 @@ function getLocation(location) {
 	*/
 }
 
+const appRoot = document.getElementById("app");
+
 //* Final app render
-var app = {
+const app = {
 	title: "Indecision App",
 	subtitle: "Let your choices be chosen at random!",
 	option: ["One, Two"],
 };
 
-var template = (
+const template = (
 	<div>
 		<h1>{app.title}</h1>
 		{app.subtitle && <p>{app.subtitle}</p>}
@@ -67,8 +69,40 @@ var template = (
 	</div>
 );
 
-var appRoot = document.getElementById("app");
-
 //* ReactDOM uses the extension .render that takes two params
 //* 1st is the JSX being injected; 2nd is the injection point i.e the Div in the HTML
 ReactDOM.render(template, appRoot);
+
+//! Counter example containing the re-render
+//* Due to the order of operation in React without the renderCounterApp being called after each action, the state would not update.
+/*
+let count = 0;
+const addOne = () => {
+	count++;
+	renderCounterApp();
+};
+const minusOne = () => {
+	count--;
+	renderCounterApp();
+};
+const reset = () => {
+	count = 0;
+	renderCounterApp();
+};
+
+const appRoot = document.getElementById("app");
+
+const renderCounterApp = () => {
+	const templateTwo = (
+		<div>
+			<h1>Count: {count}</h1>
+			<button onClick={addOne}>+1</button>
+			<button onClick={minusOne}>-1</button>
+			<button onClick={reset}>Reset</button>
+		</div>
+	);
+
+	ReactDOM.render(templateTwo, appRoot);
+};
+renderCounterApp();
+*/
