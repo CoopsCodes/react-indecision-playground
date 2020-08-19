@@ -9,7 +9,7 @@ var render = function render() {
 		React.createElement(
 			"h1",
 			null,
-			"Hello"
+			"Hello World"
 		)
 	);
 	ReactDOM.render(template, appRoot);
