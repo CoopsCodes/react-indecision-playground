@@ -79,11 +79,16 @@ var Action = function (_React$Component3) {
 	}
 
 	_createClass(Action, [{
+		key: "handlePick",
+		value: function handlePick() {
+			alert("TADAA");
+		}
+	}, {
 		key: "render",
 		value: function render() {
 			return React.createElement(
 				"button",
-				null,
+				{ onClick: this.handlePick },
 				"Roll the dice baby!"
 			);
 		}
@@ -95,18 +100,32 @@ var Action = function (_React$Component3) {
 var Options = function (_React$Component4) {
 	_inherits(Options, _React$Component4);
 
-	function Options() {
+	function Options(props) {
 		_classCallCheck(this, Options);
 
-		return _possibleConstructorReturn(this, (Options.__proto__ || Object.getPrototypeOf(Options)).apply(this, arguments));
+		var _this4 = _possibleConstructorReturn(this, (Options.__proto__ || Object.getPrototypeOf(Options)).call(this, props));
+
+		_this4.removeAll = _this4.removeAll.bind(_this4);
+		return _this4;
 	}
 
 	_createClass(Options, [{
+		key: "removeAll",
+		value: function removeAll() {
+			console.log(this.props.option);
+			alert("REMOVED");
+		}
+	}, {
 		key: "render",
 		value: function render() {
 			return React.createElement(
 				"div",
 				null,
+				React.createElement(
+					"button",
+					{ onClick: this.removeAll },
+					"Remove All"
+				),
 				this.props.option.map(function (o) {
 					return React.createElement(Option, { key: o, opt: o });
 				})
@@ -154,12 +173,26 @@ var AddOption = function (_React$Component6) {
 	}
 
 	_createClass(AddOption, [{
+		key: "addOption",
+		value: function addOption(e) {
+			e.preventDefault();
+			var formData = e.target.addOption.value.trim();
+			if (formData) {
+				alert(formData);
+			}
+		}
+	}, {
 		key: "render",
 		value: function render() {
 			return React.createElement(
-				"p",
-				null,
-				"Add option component will display here"
+				"form",
+				{ onSubmit: this.addOption },
+				React.createElement("input", { input: "text", name: "addOption" }),
+				React.createElement(
+					"button",
+					null,
+					"Add Option"
+				)
 			);
 		}
 	}]);
