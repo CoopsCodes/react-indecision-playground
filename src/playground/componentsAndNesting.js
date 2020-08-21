@@ -24,19 +24,43 @@ class Header extends React.Component {
 
 class Action extends React.Component {
 	render() {
-		return <button>Roll the dice baby!</button>;
+		return (
+			<div>
+				<button>Roll the dice baby!</button>
+			</div>
+		);
 	}
 }
 
 class Options extends React.Component {
 	render() {
-		return <p>Options will display here</p>;
+		return (
+			<div>
+				<p>Options will display here</p>
+				<Option />
+			</div>
+		);
+	}
+}
+
+class Option extends React.Component {
+	render() {
+		return (
+			<div>
+				<p>Option</p>
+				<p>Option</p>
+			</div>
+		);
 	}
 }
 
 class AddOption extends React.Component {
 	render() {
-		return <p>Add option component will display here</p>;
+		return (
+			<div>
+				<p>Add option component will display here</p>
+			</div>
+		);
 	}
 }
 

@@ -20,12 +20,15 @@ var IndecisionApp = function (_React$Component) {
 	_createClass(IndecisionApp, [{
 		key: "render",
 		value: function render() {
+			var headerTitle = "Indecision App";
+			var subTitle = "Let a your choices be made at random!";
+			var option = ["option 1", "option 2", "option 4"];
 			return React.createElement(
 				"div",
 				null,
-				React.createElement(Header, null),
+				React.createElement(Header, { title: headerTitle, subtitle: subTitle }),
 				React.createElement(Action, null),
-				React.createElement(Options, null),
+				React.createElement(Options, { option: option }),
 				React.createElement(AddOption, null)
 			);
 		}
@@ -52,12 +55,12 @@ var Header = function (_React$Component2) {
 				React.createElement(
 					"h1",
 					null,
-					"Indecision App"
+					this.props.title
 				),
 				React.createElement(
 					"p",
 					null,
-					"Let a your choices be made at random!"
+					this.props.subtitle
 				)
 			);
 		}
@@ -102,9 +105,11 @@ var Options = function (_React$Component4) {
 		key: "render",
 		value: function render() {
 			return React.createElement(
-				"p",
+				"div",
 				null,
-				"Options will display here"
+				this.props.option.map(function (o) {
+					return React.createElement(Option, { key: o, opt: o });
+				})
 			);
 		}
 	}]);
@@ -112,8 +117,35 @@ var Options = function (_React$Component4) {
 	return Options;
 }(React.Component);
 
-var AddOption = function (_React$Component5) {
-	_inherits(AddOption, _React$Component5);
+var Option = function (_React$Component5) {
+	_inherits(Option, _React$Component5);
+
+	function Option() {
+		_classCallCheck(this, Option);
+
+		return _possibleConstructorReturn(this, (Option.__proto__ || Object.getPrototypeOf(Option)).apply(this, arguments));
+	}
+
+	_createClass(Option, [{
+		key: "render",
+		value: function render() {
+			return React.createElement(
+				"div",
+				null,
+				React.createElement(
+					"p",
+					null,
+					this.props.opt
+				)
+			);
+		}
+	}]);
+
+	return Option;
+}(React.Component);
+
+var AddOption = function (_React$Component6) {
+	_inherits(AddOption, _React$Component6);
 
 	function AddOption() {
 		_classCallCheck(this, AddOption);
