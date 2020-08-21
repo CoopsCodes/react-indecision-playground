@@ -40,7 +40,7 @@ class Options extends React.Component {
 		this.removeAll = this.removeAll.bind(this);
 	}
 	removeAll() {
-		console.log(this.props.option);
+		console.log(object);
 		alert("REMOVED");
 	}
 	render() {
