@@ -8,44 +8,32 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var StateApp = function (_React$Component) {
-	_inherits(StateApp, _React$Component);
+var VisibilityToggleState = function (_React$Component) {
+	_inherits(VisibilityToggleState, _React$Component);
 
-	function StateApp(props) {
-		_classCallCheck(this, StateApp);
+	function VisibilityToggleState(props) {
+		_classCallCheck(this, VisibilityToggleState);
 
-		var _this = _possibleConstructorReturn(this, (StateApp.__proto__ || Object.getPrototypeOf(StateApp)).call(this, props));
+		var _this = _possibleConstructorReturn(this, (VisibilityToggleState.__proto__ || Object.getPrototypeOf(VisibilityToggleState)).call(this, props));
 
-		_this.minusOne = _this.minusOne.bind(_this);
-		_this.addOne = _this.addOne.bind(_this);
-		_this.resetCounter = _this.resetCounter.bind(_this);
+		_this.makeVisible = _this.makeVisible.bind(_this);
 		_this.state = {
-			count: 0
+			title: "Visibility Test",
+			comment: "TADAA",
+			visual: false
 		};
 		return _this;
 	}
 
-	_createClass(StateApp, [{
-		key: "addOne",
-		value: function addOne(e) {
-			e.preventDefault();
-			this.setState({ count: this.state.count + 1 });
-		}
-	}, {
-		key: "minusOne",
-		value: function minusOne(e) {
-			e.preventDefault();
+	_createClass(VisibilityToggleState, [{
+		key: "makeVisible",
+		value: function makeVisible(e) {
+			e.preventDefault;
 			this.setState(function (prevState) {
 				return {
-					count: prevState.count - 1
+					visual: !prevState.visual
 				};
 			});
-		}
-	}, {
-		key: "resetCounter",
-		value: function resetCounter(e) {
-			e.preventDefault();
-			this.setState({ count: 0 });
 		}
 	}, {
 		key: "render",
@@ -56,29 +44,23 @@ var StateApp = function (_React$Component) {
 				React.createElement(
 					"h1",
 					null,
-					"Count: ",
-					this.state.count
+					this.state.title
 				),
 				React.createElement(
 					"button",
-					{ onClick: this.minusOne },
-					"-1"
+					{ onClick: this.makeVisible },
+					this.state.visual ? "hide text" : "see text"
 				),
 				React.createElement(
-					"button",
-					{ onClick: this.addOne },
-					"+1"
-				),
-				React.createElement(
-					"button",
-					{ onClick: this.resetCounter },
-					"Reset"
+					"p",
+					null,
+					this.state.visual ? this.state.comment : undefined
 				)
 			);
 		}
 	}]);
 
-	return StateApp;
+	return VisibilityToggleState;
 }(React.Component);
 
-ReactDOM.render(React.createElement(StateApp, null), document.getElementById("app"));
+ReactDOM.render(React.createElement(VisibilityToggleState, null), document.getElementById("app"));
