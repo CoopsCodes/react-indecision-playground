@@ -52,6 +52,17 @@ class IndecisionApp extends React.Component {
 	}
 }
 
+const Header = (props) => {
+	return (
+		<div>
+			<h1>{props.title}</h1>
+			<p>{props.subtitle}</p>
+		</div>
+	);
+};
+
+// Class based Stateful component (before being refactored into the Stateless Header used above)
+/*
 class Header extends React.Component {
 	render() {
 		return (
@@ -62,7 +73,19 @@ class Header extends React.Component {
 		);
 	}
 }
+*/
+const Action = (props) => {
+	return (
+		<div>
+			<button onClick={props.handlePick} disabled={!props.hasOptions}>
+				Roll the dice baby!
+			</button>
+		</div>
+	);
+};
 
+// Class based Stateful component (before being refactored into the Stateless Action used above)
+/*
 class Action extends React.Component {
 	render() {
 		return (
@@ -77,7 +100,21 @@ class Action extends React.Component {
 		);
 	}
 }
+*/
 
+const Options = (props) => {
+	return (
+		<div>
+			<button onClick={props.handleDeleteAll}>Remove All</button>
+			{props.options.map((o) => (
+				<Option key={o} opt={o} />
+			))}
+		</div>
+	);
+};
+
+// Class based Stateful component (before being refactored into the Stateless Options used above)
+/*
 class Options extends React.Component {
 	render() {
 		return (
@@ -90,7 +127,18 @@ class Options extends React.Component {
 		);
 	}
 }
+*/
 
+const Option = (props) => {
+	return (
+		<div>
+			<p>{props.opt}</p>
+		</div>
+	);
+};
+
+// Class based Stateful component (before being refactored into the Stateless Option used above)
+/*
 class Option extends React.Component {
 	render() {
 		return (
@@ -100,6 +148,7 @@ class Option extends React.Component {
 		);
 	}
 }
+*/
 
 class AddOption extends React.Component {
 	constructor(props) {
