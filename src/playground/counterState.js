@@ -5,7 +5,7 @@ class CounterState extends React.Component {
 		this.minusOne = this.minusOne.bind(this);
 		this.reset = this.reset.bind(this);
 		this.state = {
-			count: 0,
+			count: props.count,
 		};
 	}
 	addOne(e) {
@@ -37,4 +37,7 @@ class CounterState extends React.Component {
 		);
 	}
 }
+CounterState.defaultProps = {
+	count: 1,
+};
 ReactDOM.render(<CounterState />, document.getElementById("app"));

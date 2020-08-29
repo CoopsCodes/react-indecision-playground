@@ -33,11 +33,11 @@ class IndecisionApp extends React.Component {
 		});
 	}
 	render() {
-		const headerTitle = "Indecision App";
-		const subTitle = "Let a your choices be made at random!";
+		// const headerTitle = "Indecision App"; // -> removed as a prop and set as a default prop in the stateless component below
+		const subTitleText = "Let a your choices be made at random!";
 		return (
 			<div>
-				<Header title={headerTitle} subtitle={subTitle} />
+				<Header subTitle={subTitleText} />
 				<Action
 					hasOptions={this.state.options.length > 0}
 					handlePick={this.handlePick}
@@ -56,9 +56,14 @@ const Header = (props) => {
 	return (
 		<div>
 			<h1>{props.title}</h1>
-			<p>{props.subtitle}</p>
+			{props.subTitle && <h3>{props.subTitle}</h3>}
 		</div>
 	);
+};
+Header.defaultProps = {
+	// This title was originally sent down as a prop, but it can be set here as it isn't necessary to be a prop, but being set as a prop allows it to be changed on other pages and updated.
+	// this provides the chance to reuse the code with only slight changes to the props
+	title: "Indecision App",
 };
 
 // Class based Stateful component (before being refactored into the Stateless Header used above)
