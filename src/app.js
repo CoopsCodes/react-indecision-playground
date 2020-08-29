@@ -4,16 +4,28 @@ class IndecisionApp extends React.Component {
 		this.handleDeleteAll = this.handleDeleteAll.bind(this);
 		this.handlePick = this.handlePick.bind(this);
 		this.handleAddOption = this.handleAddOption.bind(this);
+		this.handleDeleteOption = this.handleDeleteOption.bind(this);
 		this.state = {
 			options: [],
 		};
 	}
 	handleDeleteAll() {
+		// If the return is simple enough this can be refactored down to a single line return statement
+		/*
 		this.setState(() => {
 			return {
 				options: [],
 			};
 		});
+		*/
+		this.setState(() => ({ options: [] }));
+	}
+	handleDeleteOption(optionToRemove) {
+		this.setState((prevState) => ({
+			options: prevState.options.filter(
+				(option) => optionToRemove !== option
+			),
+		}));
 	}
 	handlePick() {
 		const randomNum = Math.floor(Math.random() * this.state.options.length);
@@ -26,11 +38,17 @@ class IndecisionApp extends React.Component {
 		} else if (this.state.options.indexOf(option) > -1) {
 			return "This option already exists";
 		}
+		// Refactored below
+		/*
 		this.setState((prevState) => {
 			return {
 				options: prevState.options.concat(option),
 			};
 		});
+		*/
+		this.setState((prevState) => ({
+			options: prevState.options.concat(option),
+		}));
 	}
 	render() {
 		// const headerTitle = "Indecision App"; // -> removed as a prop and set as a default prop in the stateless component below
@@ -45,6 +63,7 @@ class IndecisionApp extends React.Component {
 				<Options
 					options={this.state.options}
 					handleDeleteAll={this.handleDeleteAll}
+					handleDeleteOption={this.handleDeleteOption}
 				/>
 				<AddOption handleAddOption={this.handleAddOption} />
 			</div>
@@ -65,7 +84,6 @@ Header.defaultProps = {
 	// this provides the chance to reuse the code with only slight changes to the props
 	title: "Indecision App",
 };
-
 // Class based Stateful component (before being refactored into the Stateless Header used above)
 /*
 class Header extends React.Component {
@@ -79,6 +97,7 @@ class Header extends React.Component {
 	}
 }
 */
+
 const Action = (props) => {
 	return (
 		<div>
@@ -88,7 +107,6 @@ const Action = (props) => {
 		</div>
 	);
 };
-
 // Class based Stateful component (before being refactored into the Stateless Action used above)
 /*
 class Action extends React.Component {
@@ -112,12 +130,15 @@ const Options = (props) => {
 		<div>
 			<button onClick={props.handleDeleteAll}>Remove All</button>
 			{props.options.map((o) => (
-				<Option key={o} opt={o} />
+				<Option
+					key={o}
+					optionText={o}
+					handleDeleteOption={props.handleDeleteOption}
+				/>
 			))}
 		</div>
 	);
 };
-
 // Class based Stateful component (before being refactored into the Stateless Options used above)
 /*
 class Options extends React.Component {
@@ -135,13 +156,22 @@ class Options extends React.Component {
 */
 
 const Option = (props) => {
+	// Let's explain what is happening here.
+	// optionText is being sent down as a prop from state -> Options -> option -> displayed as text here
+	// handleDeleteOption is a method created in the top stateful component and being triggered in the onClick to pass the optionText prop back up to the method so the button can identify what is the correct one to filter out.
 	return (
 		<div>
-			<p>{props.opt}</p>
+			<p>{props.optionText}</p>
+			<button
+				onClick={(e) => {
+					props.handleDeleteOption(props.optionText);
+				}}
+			>
+				remove
+			</button>
 		</div>
 	);
 };
-
 // Class based Stateful component (before being refactored into the Stateless Option used above)
 /*
 class Option extends React.Component {
@@ -170,9 +200,7 @@ class AddOption extends React.Component {
 
 		const error = this.props.handleAddOption(option);
 
-		this.setState(() => {
-			return { error };
-		});
+		this.setState(() => ({ error }));
 	}
 	render() {
 		return (

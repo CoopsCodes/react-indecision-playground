@@ -40,4 +40,7 @@ class CounterState extends React.Component {
 CounterState.defaultProps = {
 	count: 1,
 };
-ReactDOM.render(<CounterState />, document.getElementById("app"));
+ReactDOM.render(
+	<CounterState /* count={-110} */ />,
+	document.getElementById("app")
+);
