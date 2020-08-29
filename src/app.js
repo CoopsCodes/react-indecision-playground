@@ -9,6 +9,33 @@ class IndecisionApp extends React.Component {
 			options: [],
 		};
 	}
+	componentDidMount() {
+		// A method that gets called when the component gets mounted to the virtual DOM
+		try {
+			const json = localStorage.getItem("options");
+			const options = JSON.parse(json);
+			if (options) {
+				this.setState(() => ({ options: options }));
+			}
+			console.log("Mounted");
+		} catch (error) {
+			console.log("Error in componentDidMount trycatch", error);
+		}
+	}
+	componentDidUpdate(prevProps, prevState) {
+		if (prevState.options.length !== this.state.options.length) {
+			const json = JSON.stringify(this.state.options);
+			localStorage.setItem("options", json);
+			console.log("Updated");
+		}
+		// A method that gets called after either the state or prop values get updated.
+		// have access to previous props and state
+	}
+	componentWillUnmount() {
+		console.log("componentWillUnmount");
+		// this fires just before the component goes away.
+		// don't call setState in here, it is used for clearing network requests or resetting timers etc
+	}
 	handleDeleteAll() {
 		// If the return is simple enough this can be refactored down to a single line return statement
 		/*
@@ -129,6 +156,9 @@ const Options = (props) => {
 	return (
 		<div>
 			<button onClick={props.handleDeleteAll}>Remove All</button>
+			{props.options.length === 0 && (
+				<p>Please add an option to get started</p>
+			)}
 			{props.options.map((o) => (
 				<Option
 					key={o}
@@ -201,6 +231,11 @@ class AddOption extends React.Component {
 		const error = this.props.handleAddOption(option);
 
 		this.setState(() => ({ error }));
+
+		if (!error) {
+			console.log(e.target);
+			e.target.addOption.value = "";
+		}
 	}
 	render() {
 		return (

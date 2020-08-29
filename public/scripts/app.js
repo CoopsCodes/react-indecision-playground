@@ -27,6 +27,41 @@ var IndecisionApp = function (_React$Component) {
 	}
 
 	_createClass(IndecisionApp, [{
+		key: "componentDidMount",
+		value: function componentDidMount() {
+			// A method that gets called when the component gets mounted to the virtual DOM
+			try {
+				var json = localStorage.getItem("options");
+				var options = JSON.parse(json);
+				if (options) {
+					this.setState(function () {
+						return { options: options };
+					});
+				}
+				console.log("Mounted");
+			} catch (error) {
+				console.log("Error in componentDidMount trycatch", error);
+			}
+		}
+	}, {
+		key: "componentDidUpdate",
+		value: function componentDidUpdate(prevProps, prevState) {
+			if (prevState.options.length !== this.state.options.length) {
+				var json = JSON.stringify(this.state.options);
+				localStorage.setItem("options", json);
+				console.log("Updated");
+			}
+			// A method that gets called after either the state or prop values get updated.
+			// have access to previous props and state
+		}
+	}, {
+		key: "componentWillUnmount",
+		value: function componentWillUnmount() {
+			console.log("componentWillUnmount");
+			// this fires just before the component goes away.
+			// don't call setState in here, it is used for clearing network requests or resetting timers etc
+		}
+	}, {
 		key: "handleDeleteAll",
 		value: function handleDeleteAll() {
 			// If the return is simple enough this can be refactored down to a single line return statement
@@ -180,6 +215,11 @@ var Options = function Options(props) {
 			{ onClick: props.handleDeleteAll },
 			"Remove All"
 		),
+		props.options.length === 0 && React.createElement(
+			"p",
+			null,
+			"Please add an option to get started"
+		),
 		props.options.map(function (o) {
 			return React.createElement(Option, {
 				key: o,
@@ -268,6 +308,11 @@ var AddOption = function (_React$Component2) {
 			this.setState(function () {
 				return { error: error };
 			});
+
+			if (!error) {
+				console.log(e.target);
+				e.target.addOption.value = "";
+			}
 		}
 	}, {
 		key: "render",
