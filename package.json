@@ -1,12 +1,20 @@
 {
-  "name": "IndecisionApp",
-  "version": "1.0.0",
-  "description": "React intro app",
-  "main": "index.js",
-  "author": "Cooper Viktor",
-  "license": "MIT",
-  "dependencies": {
-    "babel-preset-env": "1.5.2",
-    "babel-preset-react": "6.24.1"
-  }
+	"name": "IndecisionApp",
+	"version": "1.0.0",
+	"description": "React intro app",
+	"main": "index.js",
+	"author": "Cooper Viktor",
+	"license": "MIT",
+	"scripts": {
+		"server": "live-server public/",
+		"build": "webpack --watch",
+		"build-babel": "babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch"
+	},
+	"dependencies": {
+		"babel-cli": "6.24.1",
+		"babel-preset-env": "1.5.2",
+		"babel-preset-react": "6.24.1",
+		"live-server": "^1.2.1",
+		"webpack": "3.1.0"
+	}
 }
