@@ -26,4 +26,10 @@ module.exports = {
 			},
 		],
 	},
+	// https://webpack.js.org/configuration/devtool/
+	// This created an actually decent trackable stacktrace! add it!!!
+	devtool: "cheap-module-eval-source-map",
+	devServer: {
+		contentBase: path.join(__dirname, "public"),
+	},
 };
