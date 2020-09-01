@@ -60,13 +60,11 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 24);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ([
-/* 0 */,
-/* 1 */,
-/* 2 */
+/* 0 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -256,8 +254,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 3 */,
-/* 4 */
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -354,26 +351,22 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 
 /***/ }),
-/* 5 */,
-/* 6 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(25);
+  module.exports = __webpack_require__(6);
 } else {
-  module.exports = __webpack_require__(26);
+  module.exports = __webpack_require__(7);
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 7 */,
-/* 8 */,
-/* 9 */,
-/* 10 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -389,7 +382,7 @@ if (process.env.NODE_ENV === 'production') {
 var printWarning = function() {};
 
 if (process.env.NODE_ENV !== 'production') {
-  var ReactPropTypesSecret = __webpack_require__(27);
+  var ReactPropTypesSecret = __webpack_require__(8);
   var loggedTypeFailures = {};
   var has = Function.call.bind(Object.prototype.hasOwnProperty);
 
@@ -480,398 +473,48 @@ checkPropTypes.resetWarningCache = function() {
 
 module.exports = checkPropTypes;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 11 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(30);
+  module.exports = __webpack_require__(11);
 } else {
-  module.exports = __webpack_require__(31);
+  module.exports = __webpack_require__(12);
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 12 */,
-/* 13 */,
-/* 14 */,
-/* 15 */,
-/* 16 */,
-/* 17 */,
-/* 18 */,
-/* 19 */,
-/* 20 */,
-/* 21 */,
-/* 22 */,
-/* 23 */,
-/* 24 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(6);
+var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(28);
+var _reactDom = __webpack_require__(9);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
+var _Indecision = __webpack_require__(22);
+
+var _Indecision2 = _interopRequireDefault(_Indecision);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var IndecisionApp = function (_React$Component) {
-	_inherits(IndecisionApp, _React$Component);
-
-	function IndecisionApp(props) {
-		_classCallCheck(this, IndecisionApp);
-
-		var _this = _possibleConstructorReturn(this, (IndecisionApp.__proto__ || Object.getPrototypeOf(IndecisionApp)).call(this, props));
-
-		_this.handleDeleteAll = _this.handleDeleteAll.bind(_this);
-		_this.handlePick = _this.handlePick.bind(_this);
-		_this.handleAddOption = _this.handleAddOption.bind(_this);
-		_this.handleDeleteOption = _this.handleDeleteOption.bind(_this);
-		_this.state = {
-			options: []
-		};
-		return _this;
-	}
-
-	_createClass(IndecisionApp, [{
-		key: "componentDidMount",
-		value: function componentDidMount() {
-			// A method that gets called when the component gets mounted to the virtual DOM
-			try {
-				var json = localStorage.getItem("options");
-				var options = JSON.parse(json);
-				if (options) {
-					this.setState(function () {
-						return { options: options };
-					});
-				}
-				console.log("Mounted");
-			} catch (error) {
-				console.log("Error in componentDidMount trycatch", error);
-			}
-		}
-	}, {
-		key: "componentDidUpdate",
-		value: function componentDidUpdate(prevProps, prevState) {
-			if (prevState.options.length !== this.state.options.length) {
-				var json = JSON.stringify(this.state.options);
-				localStorage.setItem("options", json);
-				console.log("Updated");
-			}
-			// A method that gets called after either the state or prop values get updated.
-			// have access to previous props and state
-		}
-	}, {
-		key: "componentWillUnmount",
-		value: function componentWillUnmount() {
-			console.log("componentWillUnmount");
-			// this fires just before the component goes away.
-			// don't call setState in here, it is used for clearing network requests or resetting timers etc
-		}
-	}, {
-		key: "handleDeleteAll",
-		value: function handleDeleteAll() {
-			// If the return is simple enough this can be refactored down to a single line return statement
-			/*
-   this.setState(() => {
-   	return {
-   		options: [],
-   	};
-   });
-   */
-			this.setState(function () {
-				return { options: [] };
-			});
-		}
-	}, {
-		key: "handleDeleteOption",
-		value: function handleDeleteOption(optionToRemove) {
-			this.setState(function (prevState) {
-				return {
-					options: prevState.options.filter(function (option) {
-						return optionToRemove !== option;
-					})
-				};
-			});
-		}
-	}, {
-		key: "handlePick",
-		value: function handlePick() {
-			var randomNum = Math.floor(Math.random() * this.state.options.length);
-			var option = this.state.options[randomNum];
-			alert(option);
-		}
-	}, {
-		key: "handleAddOption",
-		value: function handleAddOption(option) {
-			if (!option) {
-				return "Please enter a valid item";
-			} else if (this.state.options.indexOf(option) > -1) {
-				return "This option already exists";
-			}
-			// Refactored below
-			/*
-   this.setState((prevState) => {
-   	return {
-   		options: prevState.options.concat(option),
-   	};
-   });
-   */
-			this.setState(function (prevState) {
-				return {
-					options: prevState.options.concat(option)
-				};
-			});
-		}
-	}, {
-		key: "render",
-		value: function render() {
-			// const headerTitle = "Indecision App"; // -> removed as a prop and set as a default prop in the stateless component below
-			var subTitleText = "Let a your choices be made at random!";
-			return _react2.default.createElement(
-				"div",
-				null,
-				_react2.default.createElement(Header, { subTitle: subTitleText }),
-				_react2.default.createElement(Action, {
-					hasOptions: this.state.options.length > 0,
-					handlePick: this.handlePick
-				}),
-				_react2.default.createElement(Options, {
-					options: this.state.options,
-					handleDeleteAll: this.handleDeleteAll,
-					handleDeleteOption: this.handleDeleteOption
-				}),
-				_react2.default.createElement(AddOption, { handleAddOption: this.handleAddOption })
-			);
-		}
-	}]);
-
-	return IndecisionApp;
-}(_react2.default.Component);
-
-var Header = function Header(props) {
-	return _react2.default.createElement(
-		"div",
-		null,
-		_react2.default.createElement(
-			"h1",
-			null,
-			props.title
-		),
-		props.subTitle && _react2.default.createElement(
-			"h3",
-			null,
-			props.subTitle
-		)
-	);
-};
-Header.defaultProps = {
-	// This title was originally sent down as a prop, but it can be set here as it isn't necessary to be a prop, but being set as a prop allows it to be changed on other pages and updated.
-	// this provides the chance to reuse the code with only slight changes to the props
-	title: "Indecision App"
-};
-// Class based Stateful component (before being refactored into the Stateless Header used above)
-/*
-class Header extends React.Component {
-	render() {
-		return (
-			<div>
-				<h1>{this.props.title}</h1>
-				<p>{this.props.subtitle}</p>
-			</div>
-		);
-	}
-}
-*/
-
-var Action = function Action(props) {
-	return _react2.default.createElement(
-		"div",
-		null,
-		_react2.default.createElement(
-			"button",
-			{ onClick: props.handlePick, disabled: !props.hasOptions },
-			"Roll the dice baby!"
-		)
-	);
-};
-// Class based Stateful component (before being refactored into the Stateless Action used above)
-/*
-class Action extends React.Component {
-	render() {
-		return (
-			<div>
-				<button
-					onClick={this.props.handlePick}
-					disabled={!this.props.hasOptions}
-				>
-					Roll the dice baby!
-				</button>
-			</div>
-		);
-	}
-}
-*/
-
-var Options = function Options(props) {
-	return _react2.default.createElement(
-		"div",
-		null,
-		_react2.default.createElement(
-			"button",
-			{ onClick: props.handleDeleteAll },
-			"Remove All"
-		),
-		props.options.length === 0 && _react2.default.createElement(
-			"p",
-			null,
-			"Please add an option to get started"
-		),
-		props.options.map(function (o) {
-			return _react2.default.createElement(Option, {
-				key: o,
-				optionText: o,
-				handleDeleteOption: props.handleDeleteOption
-			});
-		})
-	);
-};
-// Class based Stateful component (before being refactored into the Stateless Options used above)
-/*
-class Options extends React.Component {
-	render() {
-		return (
-			<div>
-				<button onClick={this.props.handleDeleteAll}>Remove All</button>
-				{this.props.options.map((o) => (
-					<Option key={o} opt={o} />
-				))}
-			</div>
-		);
-	}
-}
-*/
-
-var Option = function Option(props) {
-	// Let's explain what is happening here.
-	// optionText is being sent down as a prop from state -> Options -> option -> displayed as text here
-	// handleDeleteOption is a method created in the top stateful component and being triggered in the onClick to pass the optionText prop back up to the method so the button can identify what is the correct one to filter out.
-	return _react2.default.createElement(
-		"div",
-		null,
-		_react2.default.createElement(
-			"p",
-			null,
-			props.optionText
-		),
-		_react2.default.createElement(
-			"button",
-			{
-				onClick: function onClick(e) {
-					props.handleDeleteOption(props.optionText);
-				}
-			},
-			"remove"
-		)
-	);
-};
-// Class based Stateful component (before being refactored into the Stateless Option used above)
-/*
-class Option extends React.Component {
-	render() {
-		return (
-			<div>
-				<p>{this.props.opt}</p>
-			</div>
-		);
-	}
-}
-*/
-
-var AddOption = function (_React$Component2) {
-	_inherits(AddOption, _React$Component2);
-
-	function AddOption(props) {
-		_classCallCheck(this, AddOption);
-
-		var _this2 = _possibleConstructorReturn(this, (AddOption.__proto__ || Object.getPrototypeOf(AddOption)).call(this, props));
-
-		_this2.handleAddOption = _this2.handleAddOption.bind(_this2);
-		_this2.state = {
-			error: undefined
-		};
-		return _this2;
-	}
-
-	_createClass(AddOption, [{
-		key: "handleAddOption",
-		value: function handleAddOption(e) {
-			e.preventDefault();
-
-			var option = e.target.addOption.value.trim();
-
-			var error = this.props.handleAddOption(option);
-
-			this.setState(function () {
-				return { error: error };
-			});
-
-			if (!error) {
-				console.log(e.target);
-				e.target.addOption.value = "";
-			}
-		}
-	}, {
-		key: "render",
-		value: function render() {
-			return _react2.default.createElement(
-				"div",
-				null,
-				this.state.error && _react2.default.createElement(
-					"p",
-					null,
-					this.state.error
-				),
-				_react2.default.createElement(
-					"form",
-					{ onSubmit: this.handleAddOption },
-					_react2.default.createElement("input", { input: "text", name: "addOption" }),
-					_react2.default.createElement(
-						"button",
-						null,
-						"Add Option"
-					)
-				)
-			);
-		}
-	}]);
-
-	return AddOption;
-}(_react2.default.Component);
-
-_reactDom2.default.render(_react2.default.createElement(IndecisionApp, null), document.getElementById("app"));
+_reactDom2.default.render(_react2.default.createElement(_Indecision2.default, null), document.getElementById("app"));
 
 /***/ }),
-/* 25 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -884,7 +527,7 @@ _reactDom2.default.render(_react2.default.createElement(IndecisionApp, null), do
  * LICENSE file in the root directory of this source tree.
  */
 
-var l=__webpack_require__(4),n="function"===typeof Symbol&&Symbol.for,p=n?Symbol.for("react.element"):60103,q=n?Symbol.for("react.portal"):60106,r=n?Symbol.for("react.fragment"):60107,t=n?Symbol.for("react.strict_mode"):60108,u=n?Symbol.for("react.profiler"):60114,v=n?Symbol.for("react.provider"):60109,w=n?Symbol.for("react.context"):60110,x=n?Symbol.for("react.forward_ref"):60112,y=n?Symbol.for("react.suspense"):60113,z=n?Symbol.for("react.memo"):60115,A=n?Symbol.for("react.lazy"):
+var l=__webpack_require__(1),n="function"===typeof Symbol&&Symbol.for,p=n?Symbol.for("react.element"):60103,q=n?Symbol.for("react.portal"):60106,r=n?Symbol.for("react.fragment"):60107,t=n?Symbol.for("react.strict_mode"):60108,u=n?Symbol.for("react.profiler"):60114,v=n?Symbol.for("react.provider"):60109,w=n?Symbol.for("react.context"):60110,x=n?Symbol.for("react.forward_ref"):60112,y=n?Symbol.for("react.suspense"):60113,z=n?Symbol.for("react.memo"):60115,A=n?Symbol.for("react.lazy"):
 60116,B="function"===typeof Symbol&&Symbol.iterator;function C(a){for(var b="https://reactjs.org/docs/error-decoder.html?invariant="+a,c=1;c<arguments.length;c++)b+="&args[]="+encodeURIComponent(arguments[c]);return"Minified React error #"+a+"; visit "+b+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings."}
 var D={isMounted:function(){return!1},enqueueForceUpdate:function(){},enqueueReplaceState:function(){},enqueueSetState:function(){}},E={};function F(a,b,c){this.props=a;this.context=b;this.refs=E;this.updater=c||D}F.prototype.isReactComponent={};F.prototype.setState=function(a,b){if("object"!==typeof a&&"function"!==typeof a&&null!=a)throw Error(C(85));this.updater.enqueueSetState(this,a,b,"setState")};F.prototype.forceUpdate=function(a){this.updater.enqueueForceUpdate(this,a,"forceUpdate")};
 function G(){}G.prototype=F.prototype;function H(a,b,c){this.props=a;this.context=b;this.refs=E;this.updater=c||D}var I=H.prototype=new G;I.constructor=H;l(I,F.prototype);I.isPureReactComponent=!0;var J={current:null},K=Object.prototype.hasOwnProperty,L={key:!0,ref:!0,__self:!0,__source:!0};
@@ -903,7 +546,7 @@ exports.useLayoutEffect=function(a,b){return Z().useLayoutEffect(a,b)};exports.u
 
 
 /***/ }),
-/* 26 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -924,8 +567,8 @@ if (process.env.NODE_ENV !== "production") {
   (function() {
 'use strict';
 
-var _assign = __webpack_require__(4);
-var checkPropTypes = __webpack_require__(10);
+var _assign = __webpack_require__(1);
+var checkPropTypes = __webpack_require__(3);
 
 var ReactVersion = '16.13.1';
 
@@ -2820,10 +2463,10 @@ exports.version = ReactVersion;
   })();
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 27 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2842,7 +2485,7 @@ module.exports = ReactPropTypesSecret;
 
 
 /***/ }),
-/* 28 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2880,15 +2523,15 @@ if (process.env.NODE_ENV === 'production') {
   // DCE check should happen before ReactDOM bundle executes so that
   // DevTools can report bad minification during injection.
   checkDCE();
-  module.exports = __webpack_require__(29);
+  module.exports = __webpack_require__(10);
 } else {
-  module.exports = __webpack_require__(32);
+  module.exports = __webpack_require__(13);
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 29 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2904,7 +2547,7 @@ if (process.env.NODE_ENV === 'production') {
 /*
  Modernizr 3.0.0pre (Custom Build) | MIT
 */
-var aa=__webpack_require__(6),n=__webpack_require__(4),r=__webpack_require__(11);function u(a){for(var b="https://reactjs.org/docs/error-decoder.html?invariant="+a,c=1;c<arguments.length;c++)b+="&args[]="+encodeURIComponent(arguments[c]);return"Minified React error #"+a+"; visit "+b+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings."}if(!aa)throw Error(u(227));
+var aa=__webpack_require__(2),n=__webpack_require__(1),r=__webpack_require__(4);function u(a){for(var b="https://reactjs.org/docs/error-decoder.html?invariant="+a,c=1;c<arguments.length;c++)b+="&args[]="+encodeURIComponent(arguments[c]);return"Minified React error #"+a+"; visit "+b+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings."}if(!aa)throw Error(u(227));
 function ba(a,b,c,d,e,f,g,h,k){var l=Array.prototype.slice.call(arguments,3);try{b.apply(c,l)}catch(m){this.onError(m)}}var da=!1,ea=null,fa=!1,ha=null,ia={onError:function(a){da=!0;ea=a}};function ja(a,b,c,d,e,f,g,h,k){da=!1;ea=null;ba.apply(ia,arguments)}function ka(a,b,c,d,e,f,g,h,k){ja.apply(this,arguments);if(da){if(da){var l=ea;da=!1;ea=null}else throw Error(u(198));fa||(fa=!0,ha=l)}}var la=null,ma=null,na=null;
 function oa(a,b,c){var d=a.type||"unknown-event";a.currentTarget=na(c);ka(d,b,void 0,a);a.currentTarget=null}var pa=null,qa={};
 function ra(){if(pa)for(var a in qa){var b=qa[a],c=pa.indexOf(a);if(!(-1<c))throw Error(u(96,a));if(!sa[c]){if(!b.extractEvents)throw Error(u(97,a));sa[c]=b;c=b.eventTypes;for(var d in c){var e=void 0;var f=c[d],g=b,h=d;if(ta.hasOwnProperty(h))throw Error(u(99,h));ta[h]=f;var k=f.phasedRegistrationNames;if(k){for(e in k)k.hasOwnProperty(e)&&ua(k[e],g,h);e=!0}else f.registrationName?(ua(f.registrationName,g,h),e=!0):e=!1;if(!e)throw Error(u(98,d,a));}}}}
@@ -3187,7 +2830,7 @@ exports.unstable_renderSubtreeIntoContainer=function(a,b,c,d){if(!gk(c))throw Er
 
 
 /***/ }),
-/* 30 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3215,7 +2858,7 @@ exports.unstable_shouldYield=function(){var a=exports.unstable_now();V(a);var b=
 
 
 /***/ }),
-/* 31 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4078,10 +3721,10 @@ exports.unstable_wrapCallback = unstable_wrapCallback;
   })();
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 32 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4102,11 +3745,11 @@ if (process.env.NODE_ENV !== "production") {
   (function() {
 'use strict';
 
-var React = __webpack_require__(6);
-var _assign = __webpack_require__(4);
-var Scheduler = __webpack_require__(11);
-var checkPropTypes = __webpack_require__(10);
-var tracing = __webpack_require__(33);
+var React = __webpack_require__(2);
+var _assign = __webpack_require__(1);
+var Scheduler = __webpack_require__(4);
+var checkPropTypes = __webpack_require__(3);
+var tracing = __webpack_require__(14);
 
 var ReactSharedInternals = React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED; // Prevent newer renderers from RTE when used with older react package versions.
 // Current owner and dispatcher used to share the same ref,
@@ -29098,25 +28741,25 @@ exports.version = ReactVersion;
   })();
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 33 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(34);
+  module.exports = __webpack_require__(15);
 } else {
-  module.exports = __webpack_require__(35);
+  module.exports = __webpack_require__(16);
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 34 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29133,7 +28776,7 @@ var b=0;exports.__interactionsRef=null;exports.__subscriberRef=null;exports.unst
 
 
 /***/ }),
-/* 35 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29487,7 +29130,492 @@ exports.unstable_wrap = unstable_wrap;
   })();
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(2);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var AddOption = function (_React$Component) {
+	_inherits(AddOption, _React$Component);
+
+	function AddOption(props) {
+		_classCallCheck(this, AddOption);
+
+		var _this = _possibleConstructorReturn(this, (AddOption.__proto__ || Object.getPrototypeOf(AddOption)).call(this, props));
+
+		_this.handleAddOption = _this.handleAddOption.bind(_this);
+		_this.state = {
+			error: undefined
+		};
+		return _this;
+	}
+
+	_createClass(AddOption, [{
+		key: "handleAddOption",
+		value: function handleAddOption(e) {
+			e.preventDefault();
+
+			var option = e.target.addOption.value.trim();
+
+			var error = this.props.handleAddOption(option);
+
+			this.setState(function () {
+				return { error: error };
+			});
+
+			if (!error) {
+				console.log(e.target);
+				e.target.addOption.value = "";
+			}
+		}
+	}, {
+		key: "render",
+		value: function render() {
+			return _react2.default.createElement(
+				"div",
+				null,
+				this.state.error && _react2.default.createElement(
+					"p",
+					null,
+					this.state.error
+				),
+				_react2.default.createElement(
+					"form",
+					{ onSubmit: this.handleAddOption },
+					_react2.default.createElement("input", { input: "text", name: "addOption" }),
+					_react2.default.createElement(
+						"button",
+						null,
+						"Add Option"
+					)
+				)
+			);
+		}
+	}]);
+
+	return AddOption;
+}(_react2.default.Component);
+
+exports.default = AddOption;
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _react = __webpack_require__(2);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Option = function Option(props) {
+	// Let's explain what is happening here.
+	// optionText is being sent down as a prop from state -> Options -> option -> displayed as text here
+	// handleDeleteOption is a method created in the top stateful component and being triggered in the onClick to pass the optionText prop back up to the method so the button can identify what is the correct one to filter out.
+	return _react2.default.createElement(
+		"div",
+		null,
+		_react2.default.createElement(
+			"p",
+			null,
+			props.optionText
+		),
+		_react2.default.createElement(
+			"button",
+			{
+				onClick: function onClick(e) {
+					props.handleDeleteOption(props.optionText);
+				}
+			},
+			"remove"
+		)
+	);
+};
+// Class based Stateful component (before being refactored into the Stateless Option used above)
+/*
+class Option extends React.Component {
+	render() {
+		return (
+			<div>
+				<p>{this.props.opt}</p>
+			</div>
+		);
+	}
+}
+*/
+
+exports.default = Option;
+
+/***/ }),
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _react = __webpack_require__(2);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Header = function Header(props) {
+	return _react2.default.createElement(
+		"div",
+		null,
+		_react2.default.createElement(
+			"h1",
+			null,
+			props.title
+		),
+		props.subTitle && _react2.default.createElement(
+			"h3",
+			null,
+			props.subTitle
+		)
+	);
+};
+Header.defaultProps = {
+	// This title was originally sent down as a prop, but it can be set here as it isn't necessary to be a prop, but being set as a prop allows it to be changed on other pages and updated.
+	// this provides the chance to reuse the code with only slight changes to the props
+	title: "Indecision App"
+};
+// Class based Stateful component (before being refactored into the Stateless Header used above)
+/*
+class Header extends React.Component {
+	render() {
+		return (
+			<div>
+				<h1>{this.props.title}</h1>
+				<p>{this.props.subtitle}</p>
+			</div>
+		);
+	}
+}
+*/
+
+exports.default = Header;
+
+/***/ }),
+/* 20 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _react = __webpack_require__(2);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Action = function Action(props) {
+	return _react2.default.createElement(
+		"div",
+		null,
+		_react2.default.createElement(
+			"button",
+			{ onClick: props.handlePick, disabled: !props.hasOptions },
+			"Roll the dice baby!"
+		)
+	);
+};
+// Class based Stateful component (before being refactored into the Stateless Action used above)
+/*
+class Action extends React.Component {
+	render() {
+		return (
+			<div>
+				<button
+					onClick={this.props.handlePick}
+					disabled={!this.props.hasOptions}
+				>
+					Roll the dice baby!
+				</button>
+			</div>
+		);
+	}
+}
+*/
+
+exports.default = Action;
+
+/***/ }),
+/* 21 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _react = __webpack_require__(2);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Option = __webpack_require__(18);
+
+var _Option2 = _interopRequireDefault(_Option);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Options = function Options(props) {
+	return _react2.default.createElement(
+		"div",
+		null,
+		_react2.default.createElement(
+			"button",
+			{ onClick: props.handleDeleteAll },
+			"Remove All"
+		),
+		props.options.length === 0 && _react2.default.createElement(
+			"p",
+			null,
+			"Please add an option to get started"
+		),
+		props.options.map(function (o) {
+			return _react2.default.createElement(_Option2.default, {
+				key: o,
+				optionText: o,
+				handleDeleteOption: props.handleDeleteOption
+			});
+		})
+	);
+};
+
+// Class based Stateful component (before being refactored into the Stateless Options used above)
+/*
+class Options extends React.Component {
+	render() {
+		return (
+			<div>
+				<button onClick={this.props.handleDeleteAll}>Remove All</button>
+				{this.props.options.map((o) => (
+					<Option key={o} opt={o} />
+				))}
+			</div>
+		);
+	}
+}
+*/
+
+exports.default = Options;
+
+/***/ }),
+/* 22 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(2);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _AddOption = __webpack_require__(17);
+
+var _AddOption2 = _interopRequireDefault(_AddOption);
+
+var _Options = __webpack_require__(21);
+
+var _Options2 = _interopRequireDefault(_Options);
+
+var _Header = __webpack_require__(19);
+
+var _Header2 = _interopRequireDefault(_Header);
+
+var _Action = __webpack_require__(20);
+
+var _Action2 = _interopRequireDefault(_Action);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var IndecisionApp = function (_React$Component) {
+	_inherits(IndecisionApp, _React$Component);
+
+	function IndecisionApp(props) {
+		_classCallCheck(this, IndecisionApp);
+
+		var _this = _possibleConstructorReturn(this, (IndecisionApp.__proto__ || Object.getPrototypeOf(IndecisionApp)).call(this, props));
+
+		_this.handleDeleteAll = _this.handleDeleteAll.bind(_this);
+		_this.handlePick = _this.handlePick.bind(_this);
+		_this.handleAddOption = _this.handleAddOption.bind(_this);
+		_this.handleDeleteOption = _this.handleDeleteOption.bind(_this);
+		_this.state = {
+			options: []
+		};
+		return _this;
+	}
+
+	_createClass(IndecisionApp, [{
+		key: "componentDidMount",
+		value: function componentDidMount() {
+			// A method that gets called when the component gets mounted to the virtual DOM
+			try {
+				var json = localStorage.getItem("options");
+				var options = JSON.parse(json);
+				if (options) {
+					this.setState(function () {
+						return { options: options };
+					});
+				}
+				console.log("Mounted");
+			} catch (error) {
+				console.log("Error in componentDidMount try-catch", error);
+			}
+		}
+	}, {
+		key: "componentDidUpdate",
+		value: function componentDidUpdate(prevProps, prevState) {
+			if (prevState.options.length !== this.state.options.length) {
+				var json = JSON.stringify(this.state.options);
+				localStorage.setItem("options", json);
+				console.log("Updated");
+			}
+			// A method that gets called after either the state or prop values get updated.
+			// have access to previous props and state
+		}
+	}, {
+		key: "componentWillUnmount",
+		value: function componentWillUnmount() {
+			console.log("componentWillUnmount");
+			// this fires just before the component goes away.
+			// don't call setState in here, it is used for clearing network requests or resetting timers etc
+		}
+	}, {
+		key: "handleDeleteAll",
+		value: function handleDeleteAll() {
+			// If the return is simple enough this can be refactored down to a single line return statement
+			/*
+   this.setState(() => {
+   	return {
+   		options: [],
+   	};
+   });
+   */
+			this.setState(function () {
+				return { options: [] };
+			});
+		}
+	}, {
+		key: "handleDeleteOption",
+		value: function handleDeleteOption(optionToRemove) {
+			this.setState(function (prevState) {
+				return {
+					options: prevState.options.filter(function (option) {
+						return optionToRemove !== option;
+					})
+				};
+			});
+		}
+	}, {
+		key: "handlePick",
+		value: function handlePick() {
+			var randomNum = Math.floor(Math.random() * this.state.options.length);
+			var option = this.state.options[randomNum];
+			alert(option);
+		}
+	}, {
+		key: "handleAddOption",
+		value: function handleAddOption(option) {
+			if (!option) {
+				return "Please enter a valid item";
+			} else if (this.state.options.indexOf(option) > -1) {
+				return "This option already exists";
+			}
+			// Refactored below
+			/*
+   this.setState((prevState) => {
+   	return {
+   		options: prevState.options.concat(option),
+   	};
+   });
+   */
+			this.setState(function (prevState) {
+				return {
+					options: prevState.options.concat(option)
+				};
+			});
+		}
+	}, {
+		key: "render",
+		value: function render() {
+			// const headerTitle = "Indecision App"; // -> removed as a prop and set as a default prop in the stateless component below
+			var subTitleText = "Let a your choices be made at random!";
+			return _react2.default.createElement(
+				"div",
+				null,
+				_react2.default.createElement(_Header2.default, { subTitle: subTitleText }),
+				_react2.default.createElement(_Action2.default, {
+					hasOptions: this.state.options.length > 0,
+					handlePick: this.handlePick
+				}),
+				_react2.default.createElement(_Options2.default, {
+					options: this.state.options,
+					handleDeleteAll: this.handleDeleteAll,
+					handleDeleteOption: this.handleDeleteOption
+				}),
+				_react2.default.createElement(_AddOption2.default, { handleAddOption: this.handleAddOption })
+			);
+		}
+	}]);
+
+	return IndecisionApp;
+}(_react2.default.Component);
+
+exports.default = IndecisionApp;
 
 /***/ })
 /******/ ]);
