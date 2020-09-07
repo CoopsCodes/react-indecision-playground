@@ -3,10 +3,12 @@ import AddOption from "./AddOption";
 import Options from "./Options";
 import Header from "./Header";
 import Action from "./Action";
+import OptionModal from "./Modal";
 
 class IndecisionApp extends React.Component {
 	state = {
 		options: [],
+		selectedOption: undefined,
 	};
 	handleDeleteAll = () => {
 		// If the return is simple enough this can be refactored down to a single line return statement
@@ -20,6 +22,10 @@ class IndecisionApp extends React.Component {
 		this.setState(() => ({ options: [] }));
 	};
 
+	closeModal = () => {
+		this.setState(() => ({ selectedOption: undefined }));
+	};
+
 	handleDeleteOption = (optionToRemove) => {
 		this.setState((prevState) => ({
 			options: prevState.options.filter(
@@ -30,8 +36,9 @@ class IndecisionApp extends React.Component {
 
 	handlePick = () => {
 		const randomNum = Math.floor(Math.random() * this.state.options.length);
-		const option = this.state.options[randomNum];
-		alert(option);
+		const selected = this.state.options[randomNum];
+
+		this.setState(() => ({ selectedOption: selected }));
 	};
 
 	handleAddOption = (option) => {
@@ -66,6 +73,7 @@ class IndecisionApp extends React.Component {
 			console.log("Error in componentDidMount try-catch", error);
 		}
 	};
+
 	componentDidUpdate = (prevProps, prevState) => {
 		if (prevState.options.length !== this.state.options.length) {
 			const json = JSON.stringify(this.state.options);
@@ -75,6 +83,7 @@ class IndecisionApp extends React.Component {
 		// A method that gets called after either the state or prop values get updated.
 		// have access to previous props and state
 	};
+
 	componentWillUnmount = () => {
 		console.log("componentWillUnmount");
 		// this fires just before the component goes away.
@@ -97,6 +106,10 @@ class IndecisionApp extends React.Component {
 					handleDeleteOption={this.handleDeleteOption}
 				/>
 				<AddOption handleAddOption={this.handleAddOption} />
+				<OptionModal
+					selected={this.state.selectedOption}
+					closeModal={this.closeModal}
+				/>
 			</div>
 		);
 	}
