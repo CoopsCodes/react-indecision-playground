@@ -1,0 +1,20 @@
+.header {
+	background: $dark-purple-1;
+	margin-bottom: $xl-size;
+	padding: $m-size 0;
+}
+
+// BEM (block element modifier) naming convention
+// http://getbem.com/introduction/
+.header__title {
+	font-size: $xl-size;
+	margin: 0;
+	color: $pink;
+}
+
+.header__subtitle {
+	font-size: $m-size;
+	color: $sky-blue;
+	font-weight: 500;
+	margin: 0;
+}

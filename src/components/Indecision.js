@@ -92,20 +92,24 @@ class IndecisionApp extends React.Component {
 
 	render() {
 		// const headerTitle = "Indecision App"; // -> removed as a prop and set as a default prop in the stateless component below
-		const subTitleText = "Let a your choices be made at random!";
+		const subTitleText = "Let me make your choice for you!";
 		return (
-			<div>
+			<div className="body">
 				<Header subTitle={subTitleText} />
-				<Action
-					hasOptions={this.state.options.length > 0}
-					handlePick={this.handlePick}
-				/>
-				<Options
-					options={this.state.options}
-					handleDeleteAll={this.handleDeleteAll}
-					handleDeleteOption={this.handleDeleteOption}
-				/>
-				<AddOption handleAddOption={this.handleAddOption} />
+				<div className="container">
+					<Action
+						hasOptions={this.state.options.length > 0}
+						handlePick={this.handlePick}
+					/>
+					<div className="widget">
+						<Options
+							options={this.state.options}
+							handleDeleteAll={this.handleDeleteAll}
+							handleDeleteOption={this.handleDeleteOption}
+						/>
+						<AddOption handleAddOption={this.handleAddOption} />
+					</div>
+				</div>
 				<OptionModal
 					selected={this.state.selectedOption}
 					closeModal={this.closeModal}

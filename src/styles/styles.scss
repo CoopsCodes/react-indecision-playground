@@ -1,5 +1,8 @@
-$test-colour: pink;
-
-* {
-	color: $test-colour;
-}
+@import "./base/settings";
+@import "./base/base";
+@import "./components/option";
+@import "./components/add-option";
+@import "./components/button";
+@import "./components/widget";
+@import "./components/header";
+@import "./components/container";
