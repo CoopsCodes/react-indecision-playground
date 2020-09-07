@@ -92,7 +92,7 @@ class IndecisionApp extends React.Component {
 
 	render() {
 		// const headerTitle = "Indecision App"; // -> removed as a prop and set as a default prop in the stateless component below
-		const subTitleText = "Let me make your choice for you!";
+		const subTitleText = "A To-Do list for the stylish person!";
 		return (
 			<div className="body">
 				<Header subTitle={subTitleText} />

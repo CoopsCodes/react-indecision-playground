@@ -1,13 +1,12 @@
 .big-button {
 	background: $purple-main;
 	border: none;
-	// border-left: 0.3rem solid darken($color: $purple-main, $amount: 10%);
 	border-bottom: 0.6rem solid darken($color: $purple-main, $amount: 10%);
 	color: $cream;
 	font-weight: bold;
-	font-size: $xl-size;
+	font-size: $l-size;
 	width: 100%;
-	margin-bottom: $xl-size;
+	margin-bottom: $m-size;
 	padding: 2.4rem;
 }
 
@@ -30,4 +29,14 @@
 	border: none;
 	color: $cream;
 	padding: 0;
+}
+.button:focus {
+	outline: none;
+}
+
+@media (min-width: $desktop-breakpoint) {
+	.big-button {
+		margin-bottom: $xl-size;
+		font-size: $xl-size;
+	}
 }

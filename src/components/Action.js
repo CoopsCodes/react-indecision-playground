@@ -8,7 +8,7 @@ const Action = (props) => {
 				onClick={props.handlePick}
 				disabled={!props.hasOptions}
 			>
-				Roll the dice baby!
+				Can't decide?
 			</button>
 		</div>
 	);
